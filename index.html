@@ -4,18 +4,17 @@
 <script>
     window.bannerConfig = {
         impressionUrl:
-            "https://impression.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}",
-        clickUrl: "https://app.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}",
-        clickS2S:
-            null,
+            "https://view.adjust.com/impression/xeok8fr?campaign={campaign_name}&adgroup={ad_name}&creative={id_ad}&idfa={idfa}&external_click_id=Hybrid.ai_{bid_id}&gps_adid={gaid}&campaign_id={campaign_id}&publisher_id={ssp}&impression_id={id_inapp}&subpublisher_id={cloudid}",
+        clickUrl: "https://play.google.com/store/apps/details?id=com.coindcx.btc&referrer=adjust_external_click_id%3Dhybrid_click_id_{bid_id}%26hybrid_click_id%3D{bid_id}",
+        clickS2S: "https://s2s.adjust.com/xeok8fr?campaign={campaign_id}&adgroup={publisher_id}&creative={creative_id}&external_click_id=hybrid_click_id_{bid_id}&hybrid_click_id={bid_id}&s2s=1",
         clickMacros: "%%CLICK_URL_UNESC%%",
         width: "{width}",
         height: "{height}",
-        landscapeImage: "https://content.hybrid.ai/Hybrid/19/98/199887AF5F24E7944702C74724CD4D59.jpg",
-        portaitImage: "https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg",
-        landscapeVideo: "https://content.hybrid.ai/Hybrid/F7/4E/F74EDC76D833374CF5BCA868A896D7BC.mp4",
-        portraitVideo: "https://content.hybrid.ai/Hybrid/11/59/11598EB78BB68660F8AB64CF7D33210D.mp4",
-        videoIsMuted: false,
+        landscapeImage: "https://content.hybrid.ai/Hybrid/FA/93/FA93530C71089FCFA9B3A741DBC552D0.jpg",
+        portaitImage: "https://content.hybrid.ai/Hybrid/23/E3/23E37A6D63DB52C40CD1762FF8380D27.jpg",
+        landscapeVideo: "huy1.mp4",
+        portraitVideo: "huy1.mp4",
+        videoIsMuted: true,
         preVideoSkipDelay: 5000,
         flatTimeout: 3000,
     };
@@ -44,7 +43,6 @@
         overflow: hidden;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        z-index: 10000000;
     }
     .media {
         width: 100%;
@@ -424,7 +422,7 @@
         }),
         (AppBanner.prototype.initVideo = function () {
             (this.video = document.getElementById("video")), this.video.setAttribute("playsinline", "");
-            this.video.setAttribute("autoplay", "");
+            this.video.setAttribute("autoplay","");
             var t = document.createElement("source");
             this.config.width > this.config.height ? t.setAttribute("src", this.config.landscapeVideo) : t.setAttribute("src", this.config.portraitVideo),
                 t.setAttribute("type", "video/mp4"),
