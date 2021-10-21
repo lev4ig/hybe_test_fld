@@ -11,7 +11,7 @@
 
 			var impressionUrl = 'https://impression.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}';
 
-			var imageSource = 'https://content.hybrid.ai/Hybrid/19/98/199887AF5F24E7944702C74724CD4D59.jpg';
+			var imageSource = 'test.jpg';
 			
 			function init() {
 			 var success = false;
@@ -34,7 +34,8 @@
 
     		function displayAd() {
     			
-    			pushImpression();
+    			//pushImpression();
+    			registerImpression();
 
     			var img = document.getElementById('mainImg');
     			img.setAttribute('src', imageSource)
@@ -49,7 +50,12 @@
 				impTrack = document.createElement('img');
 				s = impressionUrl;
 				impTrack.setAttribute('src', s);
+				impTrack.setAttribute('style', 'display:none;');
 				body.appendChild(impTrack);
+    		}
+
+    		function registerImpression() {
+    			new Image().src = impressionUrl;
     		}
 
 	</script>
@@ -59,9 +65,13 @@
 			width: 100%;
 			height: 100%;
 			overflow: hidden;
+			margin: 0;
+			padding: 0;
 		}
 		img {
 			width:100%;
+			margin: 0;
+			padding: 0;
 		}
 	</style>
 
