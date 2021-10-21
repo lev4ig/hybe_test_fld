@@ -1,5 +1,6 @@
 <script src="mraid.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<div id="root"></div>
 <script type="text/javascript">
 
 		var clickUrl = 'https://app.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}';
@@ -31,7 +32,7 @@
 
 			registerImpression();
 
-			var body = document.getElementsByTagName('body').item(0);
+			var body = document.getElementById('root');
 			mainImg = document.createElement('img');
 			mainImg.setAttribute('src', imageSource);
 			mainImg.setAttribute('id', 'mainImg');
@@ -49,6 +50,7 @@
 		}
 
 		init();
+		
 
 </script>
 
