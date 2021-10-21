@@ -18,15 +18,18 @@
 			mainImg = document.createElement('img');
 			mainImg.setAttribute('src', imageSource);
 			mainImg.setAttribute('id', 'mainImg');
-			if (window.width > window.height) {
+			
+
+			var sizes = mraid.getMaxSize();
+			if (sizes.width > sizes.height) {
 				mainImg.setAttribute('width', '100%');
-			} else
-			{
+			} else {
 				mainImg.setAttribute('height', '100%');
 			}
+
 			body.appendChild(mainImg);
 
-			 document.getElementById("root").addEventListener("click", goToStore);
+			document.getElementById("root").addEventListener("click", goToStore);
 
 		}
 
