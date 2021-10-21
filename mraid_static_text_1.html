@@ -16,6 +16,7 @@
 			 		if (mraid.getState() === 'loading') 
 			 		{
 						mraid.addEventListener('ready', displayAd);
+						document.getElementById("root").innerHTML = '<img src="" alt="" onclick="goToStore();" id="mainImg">';
 					} 
 					else if (mraid.getState() === 'default') 
 					{
@@ -76,8 +77,6 @@
 
 
 	<script type="text/javascript">
-
-		document.getElementById("root").innerHTML = '<img src="" alt="" onclick="goToStore();" id="mainImg">';
 		
 		init();
 
