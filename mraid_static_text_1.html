@@ -22,9 +22,9 @@
 
 			var sizes = mraid.getMaxSize();
 			if (sizes.width > sizes.height) {
-				mainImg.setAttribute('width', '100%');
+				mainImg.setAttribute('width', sizes.width );
 			} else {
-				mainImg.setAttribute('height', '100%');
+				mainImg.setAttribute('height', sizes.height);
 			}
 
 			body.appendChild(mainImg);
