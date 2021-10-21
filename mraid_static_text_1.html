@@ -18,7 +18,6 @@
 			mainImg = document.createElement('img');
 			mainImg.setAttribute('src', imageSource);
 			mainImg.setAttribute('id', 'mainImg');
-			mainImg.setAttribute('onClick', 'goToStore();');
 			if (window.width > window.height) {
 				mainImg.setAttribute('width', '100%');
 			} else
@@ -26,6 +25,8 @@
 				mainImg.setAttribute('height', '100%');
 			}
 			body.appendChild(mainImg);
+
+			 document.getElementById("root").addEventListener("click", goToStore);
 
 		}
 
