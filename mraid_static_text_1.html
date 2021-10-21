@@ -13,6 +13,9 @@
         height: "{height}",
         landscapeImage: "https://content.hybrid.ai/Hybrid/19/98/199887AF5F24E7944702C74724CD4D59.jpg",
         portaitImage: "https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg",
+        landscapeVideo: "https://content.hybrid.ai/Hybrid/19/98/199887AF5F24E7944702C74724CD4D59.jpg",
+        portraitVideo: "https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg",
+        videoIsMuted: false,
         preVideoSkipDelay: 5000,
         flatTimeout: 3000,
     };
@@ -51,6 +54,24 @@
         left: 0;
         right: 0;
         bottom: 0;
+    }
+    .video_holder {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -o-object-fit: cover;
+        object-fit: cover;
     }
     .iconed {
         display: block;
@@ -202,6 +223,92 @@
         width: 100%;
         height: 100%;
     }
+    .video__button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        margin-left: -30px;
+        margin-top: -30px;
+        background: rgba(255, 255, 255, 0.5);
+        z-index: 1;
+        border-radius: 50%;
+        display: none;
+    }
+    .video__volume {
+        width: 28px;
+        height: 28px;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAxOSAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0xMy44NzUgOS40OTk4OEMxMy44NzUgMTEuMjE1OCAxMi44ODMzIDEyLjY5ODUgMTEuNDQ0NSAxMy40MTMxVjUuNTgxODRDMTIuODgzMyA2LjMwMTI1IDEzLjg3NSA3Ljc4MzkyIDEzLjg3NSA5LjQ5OTg4WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTAuNzUgMTIuNDE2N1Y2LjU4MzM3SDQuNjM4ODdMOS41IDEuNzIyMjVWMTcuMjc3OEw0LjYzODg3IDEyLjQxNjdIMC43NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMS40NDQ1IDE4LjAyNjRWMTYuMDE4N0MxNC4yNTQyIDE1LjE4MjYgMTYuMzA1NSAxMi41ODIgMTYuMzA1NSA5LjQ5OTk5QzE2LjMwNTUgNi40MTgwMyAxNC4yNTQyIDMuODE3MzcgMTEuNDQ0NSAyLjk4MTI0VjAuOTczNjE5QzE1LjMzODIgMS44NTgzMyAxOC4yNSA1LjMzNDAzIDE4LjI1IDkuNDk5OTlDMTguMjUgMTMuNjY1OSAxNS4zMzgyIDE3LjE0MTcgMTEuNDQ0NSAxOC4wMjY0WiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMCI+CjxyZWN0IHdpZHRoPSIxNy41IiBoZWlnaHQ9IjE3LjUiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwLjc1IDE4LjI1KSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPg==);
+        background-color: rgba(40, 40, 40, 0.5);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        top: 63px;
+        left: 17px;
+        z-index: 1;
+        position: absolute;
+        cursor: pointer;
+        background-size: 18px;
+    }
+    .video__volume--muted:before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        left: 50%;
+        background: #fff;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .video__volume--muted:after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        top: 50%;
+        background: #fff;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .video__progress-bar {
+        width: 41px;
+        height: 41px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .video__progress-go {
+        display: none;
+        width: 41px;
+        height: 41px;
+        cursor: pointer;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0xNy43Njk4IDEwLjUwMDdMOS42NDY2NiAxOC43NDA1QzkuMTM0MDMgMTkuMjU3IDkuMTM0MDMgMjAuMDk2IDkuNjQ2NjYgMjAuNjEyNkMxMC4xNTkzIDIxLjEyOTEgMTAuOTg5MSAyMS4xMjkxIDExLjUwMDUgMjAuNjEyNkwyMC41NDUyIDExLjQzNjdDMjEuMDM2OCAxMC45Mzk5IDIxLjAzOTUgMTAuMDYyNyAyMC41NDUyIDkuNTYzMjlMMTEuNDk5MiAwLjM4NzQxNEMxMC45ODc4IC0wLjEyOTEzOCAxMC4xNTY3IC0wLjEyOTEzOCA5LjY0NTM1IDAuMzg3NDE0QzkuMTMyNzIgMC45MDM5NjYgOS4xMzI3MiAxLjc0Mjk4IDkuNjQ1MzUgMi4yNTk1M0wxNy43Njk4IDEwLjUwMDdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOC41OTI1NyAxMC41MDA3TDAuNDY5NDE0IDE4Ljc0MDVDLTAuMDQzMjEzNyAxOS4yNTcgLTAuMDQzMjEzOCAyMC4wOTYgMC40Njk0MTQgMjAuNjEyNkMwLjk4MjA0MiAyMS4xMjkxIDEuODExOSAyMS4xMjkxIDIuMzIzMjIgMjAuNjEyNkwxMS4zNjggMTEuNDM2N0MxMS44NTk2IDEwLjkzOTkgMTEuODYyMiAxMC4wNjI3IDExLjM2OCA5LjU2MzI5TDIuMzIzMjIgMC4zODc0MTRDMS44MTA2IC0wLjEyOTEzOCAwLjk4MDczNyAtMC4xMjkxMzggMC40Njk0MTYgMC4zODc0MTRDLTAuMDQzMjEyMSAwLjkwMzk2NiAtMC4wNDMyMTIyIDEuNzQyOTggMC40Njk0MTUgMi4yNTk1M0w4LjU5MjU3IDEwLjUwMDdaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwIj4KPHJlY3Qgd2lkdGg9IjIxIiBoZWlnaHQ9IjIxIiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjEgMjEpIHJvdGF0ZSgtMTgwKSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPg==);
+    }
+    .can_skip .video__progress-go {
+        display: block;
+    }
+    .can_skip .video__progress-bar {
+        display: none;
+    }
+    .video__progress {
+        z-index: 1;
+        position: absolute;
+        top: 6px;
+        left: 11px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
     .circle__progress {
         fill: none;
         stroke-width: 3;
@@ -294,7 +401,7 @@
 </style>
 <script>
     function AppBanner(t) {
-        this.initConfig(t), this.initMraid(), this.insertData(), this.initEndCard();
+        this.initConfig(t), this.initMraid(), this.insertData(), this.initVideo();
     }
     (AppBanner.prototype.initMraid = function () {
         var t = this;
@@ -313,6 +420,60 @@
         }),
         (AppBanner.prototype.displayAd = function () {
             this.registerImpression(), this.video.addEventListener("ended", this.revealEndCard, !1), this.progressStart(), this.video.play();
+        }),
+        (AppBanner.prototype.initVideo = function () {
+            (this.video = document.getElementById("video")), this.video.setAttribute("playsinline", "");
+            this.video.setAttribute("autoplay", "");
+            var t = document.createElement("source");
+            this.config.width > this.config.height ? t.setAttribute("src", this.config.landscapeVideo) : t.setAttribute("src", this.config.portraitVideo),
+                t.setAttribute("type", "video/mp4"),
+                this.video.appendChild(t),
+                this.video.load(),
+                (this.video.muted = this.config.videoIsMuted),
+                this.initMuteButton(),
+                this.initCloseButton(),
+                this.video.addEventListener("canplaythrough", this.videoLoaded.bind(this), !1);
+        }),
+        (AppBanner.prototype.videoLoaded = function () {
+            (this.videoDuration = 1e3 * this.video.duration),
+                (this.preVideoSkipDelay = this.config.preVideoSkipDelay),
+                (this.config.flatTimeout = this.config.flatTimeout ? this.config.flatTimeout : this.videoDuration / 2),
+                this.initProgress(),
+                (this.root.style.display = "block"),
+                document.getElementById("root").addEventListener(
+                    "click",
+                    function (t) {
+                        ("VIDEO" !== t.target.tagName && "IMG" !== t.target.tagName) || (mraid.open(this.config.clickUrl), (new Image().src = this.config.clickS2S), (new Image().src = this.config.clickMacros));
+                    }.bind(this)
+                );
+        }),
+        (AppBanner.prototype.initMuteButton = function () {
+            (this.muteButton = document.querySelector(".video__volume")), this.config.videoIsMuted || this.muteButton.classList.remove("video__volume--muted"), this.muteButton.addEventListener("click", this.toggleMute.bind(this));
+        }),
+        (AppBanner.prototype.toggleMute = function () {
+            this.video.muted = !this.video.muted;
+            this.video.muted ? this.muteButton.classList.add("video__volume--muted") : this.muteButton.classList.remove("video__volume--muted");
+        }),
+        (AppBanner.prototype.initProgress = function () {
+            (this.progress = { interval: 50, finishedCircle: 75.36, current: 0, circleNode: document.getElementById("progress_bar"), timer: null, finished: !1, timePassed: 0 }),
+                (this.progress.increment = this.progress.finishedCircle / (this.preVideoSkipDelay / this.progress.interval));
+        }),
+        (AppBanner.prototype.progressStart = function () {
+            var t = this.progress,
+                e = this;
+            t.finished ||
+                (t.timer = window.setInterval(function () {
+                    t.circleNode.setAttribute("stroke-dasharray", t.current + ", " + t.finishedCircle),
+                        t.current >= t.finishedCircle && ((t.finished = !0), e.root.classList.add("can_skip")),
+                        (t.current += t.increment),
+                        (t.timePassed += t.interval);
+                }, t.interval));
+        }),
+        (AppBanner.prototype.progressStop = function () {
+            clearInterval(this.progress.timer);
+        }),
+        (AppBanner.prototype.insertData = function () {
+            (this.root = document.getElementById("root")), this.insertHTMLTemplate(), this.initNextStepButton();
         }),
         (AppBanner.prototype.initEndCard = function () {
             if (!this.root_content) {
@@ -333,15 +494,18 @@
         (AppBanner.prototype.closeBanner = function () {
             mraid.close();
         }),
+        (AppBanner.prototype.initNextStepButton = function () {
+            (this.button = document.querySelector(".video__progress-go")), this.button.addEventListener("click", this.revealEndCard);
+        }),
         (AppBanner.prototype.revealEndCard = function () {
-            this.initEndCard(), this.progressStop();
+            this.video.pause(), this.initEndCard(), this.progressStop();
         }),
         (AppBanner.prototype.registerImpression = function () {
             this.config.impressionUrl && (new Image().src = this.config.impressionUrl);
         }),
         (AppBanner.prototype.insertHTMLTemplate = function () {
             this.root.innerHTML =
-                "<div class='close_button'></div><div class='root_content'><div class='media'></div></div>";
+                "<div class='close_button'></div><div class='root_content'><div class='media'><div class='video_holder'><div class='video__button video__button--pause'></div><div class='video__progress'><div class='video__progress-bar'><svg width='28' height='28' class='circle__svg'><circle cx='14' cy='14' r='12' fill='none' stroke-width='3' stroke-opacity='0.3' stroke-linecap='round' stroke='#fff'></circle><circle cx='14' cy='14' r='12' fill='none' stroke-width='3' stroke-opacity='0.7' stroke-linecap='round' stroke='#fff' stroke-dasharray='0 75.36' transform='rotate(-90,14,14)' id='progress_bar'></circle></svg></div><div class='video__progress-go'></div></div><div class='video__volume video__volume--muted'></div><video id='video'></video></div></div></div>";
         }),
         (AppBanner.prototype.initConfig = function (t) {
             var e = {
@@ -354,6 +518,8 @@
                 flatTimeout: null,
                 landscapeImage: null,
                 portaitImage: null,
+                landscapeVideo: null,
+                portraitVideo: null,
                 clickS2S: null,
                 width: null,
                 height: null,
