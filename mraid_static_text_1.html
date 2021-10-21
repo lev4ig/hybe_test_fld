@@ -7,8 +7,9 @@
 
 	<script type="text/javascript">
 
-			var ClickUrl = 'play.google.com';
-			var ImpressionUrl = 'play.google.com';
+			var clickUrl = 'https://app.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}';
+			
+			var impressionUrl = 'https://impression.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}';
 
 			var imageSource = 'https://content.hybrid.ai/Hybrid/19/98/199887AF5F24E7944702C74724CD4D59.jpg';
 			
@@ -40,13 +41,13 @@
     		}
 
     		function goToStore() {
-    			window.open(ClickUrl,"_self");
+    			mraid.open(clickUrl);
     		}
 
     		function pushImpression() {
     			var body = document.getElementsByTagName('body').item(0);
 				impTrack = document.createElement('img');
-				s = ImpressionUrl;
+				s = impressionUrl;
 				impTrack.setAttribute('src', s);
 				head.appendChild(impTrack);
     		}
