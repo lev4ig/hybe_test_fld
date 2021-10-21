@@ -1,154 +1,369 @@
-<html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<head>
-<style>
-<!--
-body{
-  -moz-transition: opacity 1s ease;  /* FF3.7+ */
-  -o-transition: opacity 1s ease;  /* Opera 10.5 */
-  -webkit-transition: opacity 1s ease;  /* Saf3.2+, Chrome */
-  transition: opacity 1s ease;
-  background-color:#000000;
-}
-
-/* Portrait */
-@media screen and (orientation:portrait){
-  #_admPortraitImage{display:inline}
-}
-
-/* Landscape */
-@media screen and (orientation:landscape){
-  #_admPortraitImage{display:none}
-}
-
-table {
-   width:100%;
-   height:100%;
-}
-
-td{
-   vertical-align:middle;
-   text-align:center;
-}
-
-div.adContainer {
-  width:100%;
-  height:100%;
-}
-
-
-div.timer {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  color: white;
-  font-size: 16px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 16px 16px 16px 16px;
-  border-radius: 430px;
-}
-
-//-->
-</style>
-<script type="text/javascript" src="mraid.js"></script>
-<script type="text/javascript" src="//googleads.g.doubleclick.net/mads/static/mad/sdk/native/api/v1/google_mobile_app_ads.js"></script>
+<script src="mraid.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<div id="root" class="root s--v"></div>
 <script>
-<!--
-var _admDisplayTime = '[%DisplayTime%]';
-var _timerCounter = 0;
-
-function _admScreenFitting() {
-  var _admPImage = document.getElementById('_admPortraitImage');
-  var screenWidth = window.innerWidth;
-  var screenHeight = window.innerHeight;
-  var imageRatio = screenHeight / screenWidth;
-  if (screenWidth > screenHeight) {
-    //landscape mode
-    var newWidth = screenWidth;
-    var newHeight = screenWidth / imageRatio;
-    if (newHeight > screenHeight) {
-      var newWidth = screenHeight * imageRatio;
-      var newHeight = screenHeight;
-    }
-  } else {
-    //portrait mode
-    var newWidth = screenHeight / imageRatio;
-    var newHeight = screenHeight;
-    if (newWidth > screenWidth) {
-      var newHeight = screenWidth * imageRatio;
-      var newWidth = screenWidth;
-    }
-  }
-  displayDensity = window.devicePixelRatio ? window.devicePixelRatio : 1;
-  if (displayDensity != 1) {
-    _admPImage.src = ('https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg' != '') ? 'https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg' : _admPImage.src;
-  }
-  
-  
-    _admPImage.style.width = newWidth;
-    _admPImage.style.height = newHeight;
-  
-}
-
-function _admStartCountDown() {
-  _timerCounter += 1;
-  var _targetTime = parseInt(_admDisplayTime);
-  var _adClose = document.getElementById('_adClose');
-  if (_timerCounter > _targetTime) {
-      admob.opener.close();
-  } else {
-    _adClose.innerHTML = 'Skip ' + (_targetTime - _timerCounter);
-  }
-  setTimeout(_admStartCountDown, 1000);
-}
-
-function _onCloseHandler() {
-  admob.opener.close();
-}
-
-// Check whether MRAID is ready by adding event listener
-function checkIfReady() {
-  if(mraid.getState() === 'loading') {
-    mraid.addEventListener('ready', mraidIsReady);
-  } else{
-    displayAd();
-  }
-}
-
-// Once MRAID is ready, it does not need to listen to the ready event anymore
-function mraidIsReady() {
-  mraid.removeEventListener('ready', mraidIsReady);
-  displayAd();
-}
-
-function displayAd() {
-  var _adClose = document.getElementById('_adClose');
-  _adClose.addEventListener('click', _onCloseHandler);
-  mraid.useCustomClose(true);
-  _admStartCountDown();
-}
-
-if (window.addEventListener) {
-  window.addEventListener("resize", _admScreenFitting, false);
-}
-
-checkIfReady();
-
-//-->
+    window.bannerConfig = {
+        impressionUrl:
+            "https://impression.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}",
+        clickUrl: "https://app.appsflyer.com/com.gojek.app?af_prt=MC_Saatchi_Mobile&pid=hybrid_int&c={campaign_group_name}&af_adset=MULC_NA_NG_Others-Na_A-NA-Na&af_ad={ad_name}_{ad_size}&af_siteid={id_inapp}&af_ad_type={creative_type}&af_channel=hybe.io&af_c_id={campaign_id}&af_adset_id={id_ssp}&af_ad_id={id_ad}&af_click_lookback=7d&clickid={bid_id}&cloudid={cloudid}&advertising_id={gaid}&af_os={device_os_version}&af_media_type={environment}",
+        clickS2S:
+            null,
+        clickMacros: "%%CLICK_URL_UNESC%%",
+        width: "{width}",
+        height: "{height}",
+        landscapeImage: "https://content.hybrid.ai/Hybrid/19/98/199887AF5F24E7944702C74724CD4D59.jpg",
+        portaitImage: "https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg",
+        preVideoSkipDelay: 5000,
+        flatTimeout: 3000,
+    };
 </script>
-</head>
-<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
-<div id="_adClose" class="timer">
-</div>
-<table cellspacing="0" cellpadding="0" border="0">
-  <tr>
-    <td>
-      <a href="%%CLICK_URL_UNESC%%[%ClickThroughURL%]" id="clickthrough" target="_new" onClick="admob.opener.openUrl('%%CLICK_URL_UNESC%%[%ClickThroughURL%]',true); return false;">
-      <img id="_admPortraitImage" src="[%PortraitImage%]" style="border:0px" />
-    </a> 
-  </td>
-</tr>
-</table>
-</body>
-</html>
+<!-- inject:css -->
+<!-- endinject -->
+<!-- inject:js -->
+<!-- endinject -->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Roboto;
+        font-weight: 400;
+        background: #fff;
+        line-height: 1.3;
+    }
+    body,
+    html {
+        height: 100%;
+    }
+    .root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .media {
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .iconed {
+        display: block;
+        padding-left: 81px;
+        background-position: left 3px;
+        background-size: 70px;
+        background-repeat: no-repeat;
+        min-height: 70px;
+    }
+    .rating {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 3px;
+    }
+    .description {
+        margin-top: 12px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        max-height: 2.5em;
+    }
+    .controls__install_count {
+        color: #b2b2b2;
+        font-size: 12px;
+        text-align: center;
+    }
+    .controls__btn_wrap {
+        margin-bottom: 15px;
+    }
+    .rating__stars {
+        margin-right: 5px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: relative;
+        top: -1px;
+    }
+    .rating__mark {
+        margin-right: 5px;
+        font-weight: 500;
+    }
+    .rating__count {
+        font-weight: 300;
+        font-size: 14px;
+    }
+    .publisher,
+    .title {
+        white-space: nowrap;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+    .title {
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .publisher {
+        font-weight: 300;
+        font-size: 12px;
+    }
+    .title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+    .btn {
+        background: #3d5fda;
+        border-radius: 8px;
+        font-size: 22px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 60px;
+        text-align: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 100%;
+        padding: 5px;
+        -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    }
+    .close_button {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #4c4c4c;
+        position: absolute;
+        right: 15px;
+        top: 22px;
+        display: none !important;
+    }
+    .close_button:after,
+    .close_button:before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 12px;
+        background: #4c4c4c;
+    }
+    .close_button:before {
+        left: 50%;
+        top: 50%;
+        margin-left: -1px;
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        margin-top: -6px;
+    }
+    .close_button:after {
+        left: 50%;
+        top: 50%;
+        margin-left: -1px;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        margin-top: -6px;
+    }
+    .data {
+        color: #4d4d4d;
+        padding: 15px;
+    }
+    .root_content {
+        width: 100%;
+        height: 100%;
+    }
+    .circle__progress {
+        fill: none;
+        stroke-width: 3;
+        stroke-opacity: 0.3;
+        stroke-linecap: round;
+        stroke: #fff;
+    }
+    .circle__progress--fill {
+        stroke-opacity: 0.8;
+    }
+    .s--v .end_card_holder {
+        display: none;
+    }
+    .s--v .video_holder {
+        display: block;
+    }
+    .s--i .end_card_holder {
+        display: block;
+    }
+    .s--i .video_holder {
+        display: none;
+    }
+    .swipe {
+        overflow: visible;
+        visibility: hidden;
+        position: relative;
+        width: 66%;
+    }
+    .swipe-wrap {
+        overflow: hidden;
+        position: relative;
+    }
+    .end_card_holder {
+        height: 100%;
+    }
+    .end_card {
+        white-space: nowrap;
+        overflow-y: auto;
+        height: 100%;
+    }
+    .end_card__fullcover {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: 0;
+        left: 0;
+    }
+    .end_card__image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        z-index: 5;
+    }
+    .s--i .close_button {
+        display: block;
+    }
+    .data_trigger {
+        display: none;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: -14px;
+        left: 50%;
+        margin-left: -20px;
+        border-radius: 50%;
+    }
+    .data_trigger::before {
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 14px;
+        height: 10px;
+        width: 10px;
+        border-left: 3px solid #fff;
+        border-top: 3px solid #fff;
+        -webkit-transform: rotate(-135deg);
+        -ms-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
+    .data--flat .data_trigger {
+        top: -10px;
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+</style>
+<script>
+    function AppBanner(t) {
+        this.initConfig(t), this.initMraid(), this.insertData(), this.initEndCard();
+    }
+    (AppBanner.prototype.initMraid = function () {
+        var t = this;
+        document.onreadystatechange = function () {
+            "complete" === document.readyState &&
+                "undefined" != typeof mraid &&
+                ("loading" === mraid.getState() ? mraid.addEventListener("ready", t.onSdkReady) : "default" === mraid.getState() && (mraid.useCustomClose(!0), t.onSdkReady()));
+        };
+    }),
+        (AppBanner.prototype.onSdkReady = function () {
+            mraid.isViewable()
+                ? (window.app.displayAd(), mraid.setOrientationProperties({ allowOrientationChange: !1 }))
+                : mraid.addEventListener("viewableChange", function (t) {
+                      t && (window.app.displayAd(), mraid.removeEventListener("viewableChange", arguments.callee));
+                  });
+        }),
+        (AppBanner.prototype.displayAd = function () {
+            this.registerImpression(), this.video.addEventListener("ended", this.revealEndCard, !1), this.progressStart(), this.video.play();
+        }),
+        (AppBanner.prototype.initEndCard = function () {
+            if (!this.root_content) {
+                this.root_content = document.querySelector(".root_content");
+                var t = document.createElement("div");
+                if ((this.root_content.appendChild(t), this.config.width > this.config.height)) {
+                    var e = document.createElement("img");
+                    t.classList.add("end_card__fullcover"), e.setAttribute("src", this.config.landscapeImage), e.classList.add("end_card__image"), t.appendChild(e);
+                } else {
+                    e = document.createElement("img");
+                    t.classList.add("end_card__fullcover"), e.setAttribute("src", this.config.portaitImage), e.classList.add("end_card__image"), t.appendChild(e);
+                }
+            }
+        }),
+        (AppBanner.prototype.initCloseButton = function () {
+            (this.closeBtn = document.querySelector(".close_button")), this.closeBtn.addEventListener("click", this.closeBanner);
+        }),
+        (AppBanner.prototype.closeBanner = function () {
+            mraid.close();
+        }),
+        (AppBanner.prototype.revealEndCard = function () {
+            this.initEndCard(), this.progressStop();
+        }),
+        (AppBanner.prototype.registerImpression = function () {
+            this.config.impressionUrl && (new Image().src = this.config.impressionUrl);
+        }),
+        (AppBanner.prototype.insertHTMLTemplate = function () {
+            this.root.innerHTML =
+                "<div class='close_button'></div><div class='root_content'><div class='media'></div></div>";
+        }),
+        (AppBanner.prototype.initConfig = function (t) {
+            var e = {
+                impressionUrl: null,
+                clickUrl: null,
+                clickMacros: "",
+                videoIsMuted: !1,
+                preVideoSkipDelay: 5e3,
+                flatDataFirst: !1,
+                flatTimeout: null,
+                landscapeImage: null,
+                portaitImage: null,
+                clickS2S: null,
+                width: null,
+                height: null,
+            };
+            for (var i in ((this.config = {}), e)) t.hasOwnProperty(i) ? (this.config[i] = t[i]) : (this.config[i] = e[i]);
+            this.revealEndCard = this.revealEndCard.bind(this);
+        });
+</script>
+<script>
+    (function () {
+        window.app = new AppBanner(window.bannerConfig);
+    })();
+</script>
