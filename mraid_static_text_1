@@ -1,0 +1,154 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<head>
+<style>
+<!--
+body{
+  -moz-transition: opacity 1s ease;  /* FF3.7+ */
+  -o-transition: opacity 1s ease;  /* Opera 10.5 */
+  -webkit-transition: opacity 1s ease;  /* Saf3.2+, Chrome */
+  transition: opacity 1s ease;
+  background-color:#000000;
+}
+
+/* Portrait */
+@media screen and (orientation:portrait){
+  #_admPortraitImage{display:inline}
+}
+
+/* Landscape */
+@media screen and (orientation:landscape){
+  #_admPortraitImage{display:none}
+}
+
+table {
+   width:100%;
+   height:100%;
+}
+
+td{
+   vertical-align:middle;
+   text-align:center;
+}
+
+div.adContainer {
+  width:100%;
+  height:100%;
+}
+
+
+div.timer {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  color: white;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 16px 16px 16px 16px;
+  border-radius: 430px;
+}
+
+//-->
+</style>
+<script type="text/javascript" src="mraid.js"></script>
+<script type="text/javascript" src="//googleads.g.doubleclick.net/mads/static/mad/sdk/native/api/v1/google_mobile_app_ads.js"></script>
+<script>
+<!--
+var _admDisplayTime = '[%DisplayTime%]';
+var _timerCounter = 0;
+
+function _admScreenFitting() {
+  var _admPImage = document.getElementById('_admPortraitImage');
+  var screenWidth = window.innerWidth;
+  var screenHeight = window.innerHeight;
+  var imageRatio = screenHeight / screenWidth;
+  if (screenWidth > screenHeight) {
+    //landscape mode
+    var newWidth = screenWidth;
+    var newHeight = screenWidth / imageRatio;
+    if (newHeight > screenHeight) {
+      var newWidth = screenHeight * imageRatio;
+      var newHeight = screenHeight;
+    }
+  } else {
+    //portrait mode
+    var newWidth = screenHeight / imageRatio;
+    var newHeight = screenHeight;
+    if (newWidth > screenWidth) {
+      var newHeight = screenWidth * imageRatio;
+      var newWidth = screenWidth;
+    }
+  }
+  displayDensity = window.devicePixelRatio ? window.devicePixelRatio : 1;
+  if (displayDensity != 1) {
+    _admPImage.src = ('https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg' != '') ? 'https://content.hybrid.ai/Hybrid/BE/8D/BE8D53E8303E225D7E57316513791039.jpg' : _admPImage.src;
+  }
+  
+  
+    _admPImage.style.width = newWidth;
+    _admPImage.style.height = newHeight;
+  
+}
+
+function _admStartCountDown() {
+  _timerCounter += 1;
+  var _targetTime = parseInt(_admDisplayTime);
+  var _adClose = document.getElementById('_adClose');
+  if (_timerCounter > _targetTime) {
+      admob.opener.close();
+  } else {
+    _adClose.innerHTML = 'Skip ' + (_targetTime - _timerCounter);
+  }
+  setTimeout(_admStartCountDown, 1000);
+}
+
+function _onCloseHandler() {
+  admob.opener.close();
+}
+
+// Check whether MRAID is ready by adding event listener
+function checkIfReady() {
+  if(mraid.getState() === 'loading') {
+    mraid.addEventListener('ready', mraidIsReady);
+  } else{
+    displayAd();
+  }
+}
+
+// Once MRAID is ready, it does not need to listen to the ready event anymore
+function mraidIsReady() {
+  mraid.removeEventListener('ready', mraidIsReady);
+  displayAd();
+}
+
+function displayAd() {
+  var _adClose = document.getElementById('_adClose');
+  _adClose.addEventListener('click', _onCloseHandler);
+  mraid.useCustomClose(true);
+  _admStartCountDown();
+}
+
+if (window.addEventListener) {
+  window.addEventListener("resize", _admScreenFitting, false);
+}
+
+checkIfReady();
+
+//-->
+</script>
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<div id="_adClose" class="timer">
+</div>
+<table cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td>
+      <a href="%%CLICK_URL_UNESC%%[%ClickThroughURL%]" id="clickthrough" target="_new" onClick="admob.opener.openUrl('%%CLICK_URL_UNESC%%[%ClickThroughURL%]',true); return false;">
+      <img id="_admPortraitImage" src="[%PortraitImage%]" style="border:0px" />
+    </a> 
+  </td>
+</tr>
+</table>
+</body>
+</html>
